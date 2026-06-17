@@ -2,6 +2,17 @@
 
 本项目所有重要变更记录于此。格式参考 [Keep a Changelog](https://keepachangelog.com/zh-CN/)。
 
+## [1.2.0] — 2026-06-17
+
+### 🐛 Fixed — 通用性修复 续（[#1](https://github.com/mosjin/save-project-assets/issues/1)）
+
+- **Step 7 不再无条件 `git push`**：受保护 / 需 review 分支上 commit 后停止，交由用户 push 或开 PR（3 变体）。
+- **zh 变体补齐 auto-detect**：新增「第零步b 自动检测项目上下文」（含 `GIT_HOST` 与非 GitHub 跳过逻辑），移除 #1 引入的冗余内联 guard；资产表不再要求手填仓库；Step 4 占位符统一为已解析的 `{GITHUB_REPO}`（3 变体）。
+
+### 📝 Docs
+
+- README / README_EN：说明文档文件名为约定俗成、可在 SKILL.md 改名。
+
 ## [1.1.0] — 2026-06-17
 
 ### 🐛 Fixed — 通用性修复（[#1](https://github.com/mosjin/save-project-assets/issues/1)）

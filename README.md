@@ -131,6 +131,8 @@ Skill 会自动识别：
 -->
 ```
 
+> 📄 文档文件名（`TECH_LOG.md` / `CHANGELOG.md` / `IDEAS.md`）为约定俗成，如项目已有不同命名，可在 SKILL.md 中按需改名。
+
 记忆路径由 Claude Code 自动检测，无需手动配置。
 
 ---

@@ -159,7 +159,7 @@ File: `docs/CHANGELOG.md`
 For each issue the user confirmed working this session:
 
 ```bash
-gh issue comment {N} --repo {YOUR_GITHUB_REPO} --body "## ✅ Fixed / 已修复
+gh issue comment {N} --repo {GITHUB_REPO} --body "## ✅ Fixed / 已修复
 
 {2-3 sentences: root cause + fix approach + how it was verified}
 
@@ -231,6 +231,9 @@ If `docs/` files were modified:
 ```bash
 git add docs/TECH_LOG.md docs/CHANGELOG.md docs/IDEAS.md
 git commit -m "docs: {brief description of what was recorded}"
+# Push ONLY if direct pushes to this branch are allowed.
+# On protected / review-required branches, stop after commit and
+# let the user push or open a PR instead.
 git push origin {current-branch}
 ```
 

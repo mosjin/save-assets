@@ -131,6 +131,8 @@ To override, open the installed SKILL.md and uncomment the CONFIG block:
 -->
 ```
 
+> 📄 Doc filenames (`TECH_LOG.md` / `CHANGELOG.md` / `IDEAS.md`) are conventions — rename them in SKILL.md if your project already uses different names.
+
 Memory path is auto-detected by Claude Code — no setup needed.
 
 ---

@@ -66,6 +66,36 @@ description: 当用户确认某功能可用（"可以了"、"验证通过"、"�
 
 ---
 
+## 第零步b：自动检测项目上下文
+
+写入任何内容前，解析以下值（若 CONFIG 已覆盖则用覆盖值，否则自动检测）：
+
+```bash
+# GitHub 仓库（owner/repo）
+git remote get-url origin
+# → 解析：https://github.com/owner/repo.git  或  git@github.com:owner/repo.git
+# → 提取：owner/repo
+# → 同时记录 HOST：github.com / gitlab.com / bitbucket.org …
+
+# 当前分支
+git branch --show-current
+
+# 文档目录 — 依次检测：docs/ → doc/ → 项目根目录
+ls docs/ 2>/dev/null || ls doc/ 2>/dev/null || echo "用项目根目录"
+```
+
+解析结果存为：
+- `GITHUB_REPO` = 例如 `myorg/myrepo`
+- `GIT_HOST` = 从 remote URL 解析的 host（例如 `github.com`）
+- `BRANCH` = 例如 `main` 或 `feature/xyz`
+- `DOCS_DIR` = 例如 `docs/` 或 `./`
+
+后续步骤均使用这些值。
+- 若 `git remote get-url origin` 失败（无 remote），静默跳过第四步。
+- 若 `GIT_HOST` **不是** `github.com`（GitLab/Bitbucket/Gitea），静默跳过第四步——`gh` 仅支持 GitHub。
+
+---
+
 ## 第一步：采集本次会话知识
 
 写入任何内容之前，先整理本次会话产生了什么：
@@ -124,10 +154,8 @@ description: 当用户确认某功能可用（"可以了"、"验证通过"、"�
 
 对本次会话用户确认修复的每个 Issue：
 
-> ⚠️ 仅当 remote host 为 `github.com` 时执行本步骤。若无 remote，或 host 为 GitLab/Bitbucket/Gitea，静默跳过——`gh` 仅支持 GitHub。
-
 ```bash
-gh issue comment {N} --repo {YOUR_GITHUB_REPO} --body "## ✅ 已修复
+gh issue comment {N} --repo {GITHUB_REPO} --body "## ✅ 已修复
 
 {2-3 句话：根因 + 修复方案 + 验证方式}
 
@@ -199,6 +227,8 @@ type: project | feedback | user | reference
 ```bash
 git add docs/TECH_LOG.md docs/CHANGELOG.md docs/IDEAS.md
 git commit -m "docs: {简短描述本次记录内容}"
+# 仅当允许直接 push 到该分支时才执行。
+# 受保护 / 需 review 的分支：commit 后停止，交由用户 push 或开 PR。
 git push origin {当前分支}
 ```
 
@@ -224,7 +254,7 @@ git push origin {当前分支}
 | 创意列表 | `docs/IDEAS.md` |
 | 架构文档 | `docs/ARCHITECTURE.md` |
 | 记忆（自动）| `~/.claude/projects/{sanitized-cwd}/memory/MEMORY.md` |
-| GitHub 仓库 | _（在上方配置中填写 YOUR_GITHUB_REPO）_ |
+| GitHub 仓库 | 从 `git remote get-url origin` 自动解析 |
 
 ---
 
