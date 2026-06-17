@@ -124,6 +124,8 @@ description: 当用户确认某功能可用（"可以了"、"验证通过"、"�
 
 对本次会话用户确认修复的每个 Issue：
 
+> ⚠️ 仅当 remote host 为 `github.com` 时执行本步骤。若无 remote，或 host 为 GitLab/Bitbucket/Gitea，静默跳过——`gh` 仅支持 GitHub。
+
 ```bash
 gh issue comment {N} --repo {YOUR_GITHUB_REPO} --body "## ✅ 已修复
 

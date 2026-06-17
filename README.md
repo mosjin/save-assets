@@ -114,8 +114,12 @@ python install.py
 
 Skill 会自动识别：
 - **GitHub 仓库** — 从 `git remote get-url origin` 解析
+- **Remote host** — 从 remote URL 解析（`github.com` / `gitlab.com` / …）
 - **当前分支** — 从 `git branch --show-current` 读取
 - **文档目录** — 依次检测 `docs/`、`doc/`、项目根目录
+
+> 🌐 非 GitHub 仓库（GitLab / Bitbucket / Gitea）会**自动跳过** Issue 评论步骤——`gh` 仅支持 GitHub。
+> 🈳 default 版会**自动识别工作语言**（依据项目现有文档 / 对话语言），仅以单一语言写入，不强制双语。
 
 如需覆盖，打开安装后的 SKILL.md，取消注释 CONFIG 块：
 

@@ -19,6 +19,8 @@ description: Use proactively when user confirms something works ("it works", "ve
 
 Capture and persist all knowledge generated in this session: engineering lessons, feature status, fixed issues, ideas, and memory updates.
 
+**Language / 语言:** Auto-detect the working language — match the project's existing docs (TECH_LOG/CHANGELOG), falling back to the user's conversation language. Write each entry in that **single** language. The bilingual headers shown in the templates below are illustrative; emit only the detected language, not both.
+
 **Announce at start:** "Saving project assets… / 正在保存项目资产…"
 
 ---
@@ -75,6 +77,7 @@ Before writing anything, resolve these values (use CONFIG overrides if set, othe
 git remote get-url origin
 # → parse: https://github.com/owner/repo.git  OR  git@github.com:owner/repo.git
 # → extract: owner/repo
+# → also note HOST: github.com / gitlab.com / bitbucket.org …
 
 # Current branch
 git branch --show-current
@@ -86,10 +89,13 @@ ls docs/ 2>/dev/null || ls doc/ 2>/dev/null || echo "use project root"
 
 Store the resolved values as:
 - `GITHUB_REPO` = e.g. `myorg/myrepo`
+- `GIT_HOST` = host parsed from the remote URL (e.g. `github.com`, `gitlab.com`)
 - `BRANCH` = e.g. `main` or `feature/xyz`
 - `DOCS_DIR` = e.g. `docs/` or `./`
 
-Use these in all subsequent steps. If `git remote get-url origin` fails (no remote), skip Step 4 (GitHub comments) silently.
+Use these in all subsequent steps.
+- If `git remote get-url origin` fails (no remote), skip Step 4 (GitHub comments) silently.
+- If `GIT_HOST` is **not** `github.com` (e.g. GitLab, Bitbucket, Gitea), skip Step 4 silently — `gh` only works with GitHub.
 
 ---
 
