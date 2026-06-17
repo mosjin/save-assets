@@ -114,8 +114,12 @@ All values are **auto-detected from git** — no configuration required in most 
 
 The skill automatically detects:
 - **GitHub repo** — from `git remote get-url origin`
+- **Remote host** — parsed from the remote URL (`github.com` / `gitlab.com` / …)
 - **Current branch** — from `git branch --show-current`
 - **Docs directory** — checks `docs/`, then `doc/`, then project root
+
+> 🌐 Non-GitHub repos (GitLab / Bitbucket / Gitea) **skip the Issue-comment step automatically** — `gh` only works with GitHub.
+> 🈳 The default variant **auto-detects the working language** (from existing docs / conversation) and writes in a single language — no forced bilingual output.
 
 To override, open the installed SKILL.md and uncomment the CONFIG block:
 
@@ -126,6 +130,8 @@ To override, open the installed SKILL.md and uncomment the CONFIG block:
   BRANCH      = main         (override only — auto-detected from git branch)
 -->
 ```
+
+> 📄 Doc filenames (`TECH_LOG.md` / `CHANGELOG.md` / `IDEAS.md`) are conventions — rename them in SKILL.md if your project already uses different names.
 
 Memory path is auto-detected by Claude Code — no setup needed.
 

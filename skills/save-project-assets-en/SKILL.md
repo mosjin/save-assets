@@ -59,6 +59,7 @@ Before writing anything, resolve these values (use CONFIG overrides if set, othe
 git remote get-url origin
 # → parse: https://github.com/owner/repo.git  OR  git@github.com:owner/repo.git
 # → extract: owner/repo
+# → also note HOST: github.com / gitlab.com / bitbucket.org …
 
 # Current branch
 git branch --show-current
@@ -70,10 +71,13 @@ ls docs/ 2>/dev/null || ls doc/ 2>/dev/null || echo "use project root"
 
 Store the resolved values as:
 - `GITHUB_REPO` = e.g. `myorg/myrepo`
+- `GIT_HOST` = host parsed from the remote URL (e.g. `github.com`, `gitlab.com`)
 - `BRANCH` = e.g. `main` or `feature/xyz`
 - `DOCS_DIR` = e.g. `docs/` or `./`
 
-Use these in all subsequent steps. If `git remote get-url origin` fails (no remote), skip Step 4 silently.
+Use these in all subsequent steps.
+- If `git remote get-url origin` fails (no remote), skip Step 4 silently.
+- If `GIT_HOST` is **not** `github.com` (e.g. GitLab, Bitbucket, Gitea), skip Step 4 silently — `gh` only works with GitHub.
 
 ---
 
@@ -150,7 +154,7 @@ File: `docs/CHANGELOG.md`
 For each issue the user confirmed working this session:
 
 ```bash
-gh issue comment {N} --repo {YOUR_GITHUB_REPO} --body "## ✅ Fixed
+gh issue comment {N} --repo {GITHUB_REPO} --body "## ✅ Fixed
 
 {2-3 sentences: root cause + fix approach + how it was verified}
 
@@ -222,6 +226,9 @@ If `docs/` files were modified:
 ```bash
 git add docs/TECH_LOG.md docs/CHANGELOG.md docs/IDEAS.md
 git commit -m "docs: {brief description of what was recorded}"
+# Push ONLY if direct pushes to this branch are allowed.
+# On protected / review-required branches, stop after commit and
+# let the user push or open a PR instead.
 git push origin {current-branch}
 ```
 
