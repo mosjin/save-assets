@@ -79,7 +79,7 @@ python install.py
 
 ---
 
-## 工作流（共 7 步）
+## 工作流（共 8 步）
 
 | 步骤 | 操作 |
 |------|------|
@@ -87,10 +87,11 @@ python install.py
 | 1 | 采集会话知识 |
 | 2 | 更新 `docs/TECH_LOG.md` 经验教训 |
 | 3 | 更新 `docs/CHANGELOG.md` 功能状态 |
+| 3b | 更新 `README.md` 用户摘要（只改受影响章节） |
 | 4 | 评论已确认修复的 GitHub Issue |
 | 5 | 更新 `docs/IDEAS.md` 新想法 |
 | 6 | 更新 Claude Code 自动记忆 (MEMORY.md) |
-| 7 | `git add docs/ && git commit && git push` |
+| 7 | `git add docs/ README.md && git commit && git push` |
 
 ---
 

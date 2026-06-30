@@ -2,6 +2,16 @@
 
 本项目所有重要变更记录于此。格式参考 [Keep a Changelog](https://keepachangelog.com/zh-CN/)。
 
+## [1.3.0] — 2026-07-01
+
+### 🚀 Feature
+
+- **Step 3b：新增更新 README.md 步骤** — 保存工作流在写完 CHANGELOG 后，自动检查并更新 README 中受影响章节（功能列表、变更记录、已知问题、安装说明），只改有变化的部分。
+- 同步更新全部 6 个 SKILL.md 变体（bilingual / EN / ZH × `.claude/skills/` + `skills/`）。
+- Step 1 采集表新增 `README summary` 行；Step 7 `git add` 新增 `README.md`；Checklist 增加 README 条目。
+
+---
+
 ## [1.2.0] — 2026-06-17
 
 ### 🐛 Fixed — 通用性修复 续（[#1](https://github.com/mosjin/save-project-assets/issues/1)）
