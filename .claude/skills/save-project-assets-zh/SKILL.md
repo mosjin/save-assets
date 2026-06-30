@@ -107,6 +107,7 @@ ls docs/ 2>/dev/null || ls doc/ 2>/dev/null || echo "用项目根目录"
 | 已修复 Issue | 用户确认可用的 Issue | GitHub Issue 评论 |
 | 创意 / 待办 | 发现但未实现的改进点 | `docs/IDEAS.md` |
 | 持久事实 | 架构、偏好、约束 | 记忆文件 |
+| README 摘要 | 已上线新功能、已修复 Issue、安装步骤变更 | `README.md` |
 
 **只写新内容** — 不重复已有条目。
 
@@ -147,6 +148,24 @@ ls docs/ 2>/dev/null || ls doc/ 2>/dev/null || echo "用项目根目录"
 - 格式：`### 🐛 修复` · `### 🚀 新功能` · `### 📐 重构`
 - 包含 Issue 编号、关键行为变更、测试数量
 - **不重复**已有条目
+
+---
+
+## 第三步b：更新 README.md（用户摘要）
+
+文件：`README.md`（项目根目录）
+
+只更新本次会话中发生变化的章节：
+
+- **功能列表**：添加本次上线的新功能
+- **变更记录**：若 README 含简短 changelog 块，追加最新条目
+- **已知问题**：删除本次修复的 Issue；添加新发现的问题
+- **安装说明**：若安装步骤或依赖有变化则更新
+
+**规则：**
+- 只改变化的部分，不重写整个 README
+- 保持改动最小且面向用户，省略内部实现细节
+- **若本次会话未影响任何 README 章节则跳过**
 
 ---
 
@@ -225,7 +244,7 @@ type: project | feedback | user | reference
 若 `docs/` 文件有修改：
 
 ```bash
-git add docs/TECH_LOG.md docs/CHANGELOG.md docs/IDEAS.md
+git add docs/TECH_LOG.md docs/CHANGELOG.md docs/IDEAS.md README.md
 git commit -m "docs: {简短描述本次记录内容}"
 # 仅当允许直接 push 到该分支时才执行。
 # 受保护 / 需 review 的分支：commit 后停止，交由用户 push 或开 PR。
@@ -262,6 +281,7 @@ git push origin {当前分支}
 
 - [ ] TECH_LOG 已更新（或确认无新内容）
 - [ ] CHANGELOG 已更新（或确认无新内容）
+- [ ] README.md 已更新（或确认无新内容）
 - [ ] 已修复的 GitHub Issue 已评论
 - [ ] IDEAS.md 已更新（或确认无新内容）
 - [ ] 记忆文件已更新当前事实

@@ -1,7 +1,7 @@
 {
   "name": "save-project-assets",
-  "version": "1.2.0",
-  "description": "Proactively save all project knowledge at commit time or on demand: TECH_LOG lessons, CHANGELOG status, GitHub issue comments, IDEAS, and persistent memory. Bilingual (中文/English).",
+  "version": "1.3.0",
+  "description": "Proactively save all project knowledge at commit time or on demand: TECH_LOG lessons, CHANGELOG status, README updates, GitHub issue comments, IDEAS, and persistent memory. Bilingual (中文/English).",
   "author": {
     "name": "mosjin",
     "url": "https://github.com/mosjin"

@@ -106,6 +106,7 @@ Before writing anything, collect from this session:
 | Fixed issues | Confirmed working by user | GitHub issue comments |
 | Ideas / future work | Noticed but not implemented | `docs/IDEAS.md` |
 | Persistent facts | Architecture, preferences, constraints | Memory files |
+| README summary | New features shipped, fixed issues, install changes | `README.md` |
 
 **Only write new entries** — never duplicate existing content.
 
@@ -146,6 +147,24 @@ File: `docs/CHANGELOG.md`
 - Format: `### 🐛 Fix` · `### 🚀 Feature` · `### 📐 Refactor`
 - Include issue numbers, key behavior changes, test counts
 - **Never** repeat existing entries
+
+---
+
+## Step 3b: Update README.md (User-Facing Summary)
+
+File: `README.md` (project root)
+
+Update only the sections that changed this session:
+
+- **Features**: add newly shipped features
+- **Changelog**: if README contains a short changelog block, append the latest entry
+- **Known issues**: remove issues fixed this session; add newly discovered ones
+- **Installation**: update if install steps or requirements changed
+
+**Rules:**
+- Edit only what changed — do not rewrite the entire README
+- Keep changes minimal and user-facing; omit internal implementation details
+- **Skip** if no README sections are affected by this session's work
 
 ---
 
@@ -224,7 +243,7 @@ type: project | feedback | user | reference
 If `docs/` files were modified:
 
 ```bash
-git add docs/TECH_LOG.md docs/CHANGELOG.md docs/IDEAS.md
+git add docs/TECH_LOG.md docs/CHANGELOG.md docs/IDEAS.md README.md
 git commit -m "docs: {brief description of what was recorded}"
 # Push ONLY if direct pushes to this branch are allowed.
 # On protected / review-required branches, stop after commit and
@@ -263,6 +282,7 @@ On the first message of a new session:
 
 - [ ] TECH_LOG updated (or confirmed nothing new)
 - [ ] CHANGELOG updated (or confirmed nothing new)
+- [ ] README.md updated (or confirmed nothing new)
 - [ ] Fixed GitHub issues commented
 - [ ] IDEAS.md updated (or confirmed nothing new)
 - [ ] Memory files updated with current facts
