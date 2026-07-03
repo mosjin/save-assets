@@ -10,6 +10,7 @@
 - 📝 **CHANGELOG** — 功能状态 & 修复记录
 - 💬 **GitHub Issues** — 自动评论已修复 Issue
 - 💡 **IDEAS** — 未来工作 & 改进想法
+- ⚠️ **LESSONS** — 教训 & 避坑（踩过的坑、根因、规避）
 - 🧠 **Memory** — 跨会话持久上下文
 
 支持三个版本：**中文 (zh)** · **English (en)** · **自动识别 (default)**
@@ -90,6 +91,7 @@ python install.py
 | 3b | 更新 `README.md` 用户摘要（只改受影响章节） |
 | 4 | 评论已确认修复的 GitHub Issue |
 | 5 | 更新 `docs/IDEAS.md` 新想法 |
+| 5b | 更新 `docs/LESSONS.md` 教训（踩坑/根因/规避） |
 | 6 | 更新 Claude Code 自动记忆 (MEMORY.md) |
 | 7 | `git add docs/ README.md && git commit && git push` |
 
@@ -132,7 +134,7 @@ Skill 会自动识别：
 -->
 ```
 
-> 📄 文档文件名（`TECH_LOG.md` / `CHANGELOG.md` / `IDEAS.md`）为约定俗成，如项目已有不同命名，可在 SKILL.md 中按需改名。
+> 📄 文档文件名（`TECH_LOG.md` / `CHANGELOG.md` / `IDEAS.md` / `LESSONS.md`）为约定俗成，如项目已有不同命名，可在 SKILL.md 中按需改名。
 
 记忆路径由 Claude Code 自动检测，无需手动配置。
 
