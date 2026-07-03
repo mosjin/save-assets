@@ -106,6 +106,7 @@ ls docs/ 2>/dev/null || ls doc/ 2>/dev/null || echo "用项目根目录"
 | 功能状态 | 已构建/测试/合并的内容 | `docs/CHANGELOG.md` |
 | 已修复 Issue | 用户确认可用的 Issue | GitHub Issue 评论 |
 | 创意 / 待办 | 发现但未实现的改进点 | `docs/IDEAS.md` |
+| 教训 | 踩过的坑、犯过的错、下次规避点 | `docs/LESSONS.md` |
 | 持久事实 | 架构、偏好、约束 | 记忆文件 |
 | README 摘要 | 已上线新功能、已修复 Issue、安装步骤变更 | `README.md` |
 
@@ -201,6 +202,24 @@ Status: **fixed**"
 
 ---
 
+## 第五步之二：更新 LESSONS.md（教训）
+
+文件：`docs/LESSONS.md`
+
+踩过的坑、犯过的错、下次要规避的点 —— 区别于 TECH_LOG（流水日志），LESSONS 记录的是“教训要点”：
+
+```markdown
+## {主题}
+
+- **教训：** {踩了什么坑}
+  - **原因：** {根因}
+  - **规避：** {下次怎么避免}
+```
+
+**无新内容则跳过。**
+
+---
+
 ## 第六步：更新持久记忆
 
 记忆目录：Claude Code 自动位于 `~/.claude/projects/{sanitized-cwd}/memory/`
@@ -244,7 +263,7 @@ type: project | feedback | user | reference
 若 `docs/` 文件有修改：
 
 ```bash
-git add docs/TECH_LOG.md docs/CHANGELOG.md docs/IDEAS.md README.md
+git add docs/TECH_LOG.md docs/CHANGELOG.md docs/IDEAS.md docs/LESSONS.md README.md
 git commit -m "docs: {简短描述本次记录内容}"
 # 仅当允许直接 push 到该分支时才执行。
 # 受保护 / 需 review 的分支：commit 后停止，交由用户 push 或开 PR。
@@ -271,6 +290,7 @@ git push origin {当前分支}
 | 技术经验 | `docs/TECH_LOG.md` |
 | 变更日志 | `docs/CHANGELOG.md` |
 | 创意列表 | `docs/IDEAS.md` |
+| 教训 | `docs/LESSONS.md` |
 | 架构文档 | `docs/ARCHITECTURE.md` |
 | 记忆（自动）| `~/.claude/projects/{sanitized-cwd}/memory/MEMORY.md` |
 | GitHub 仓库 | 从 `git remote get-url origin` 自动解析 |
@@ -284,5 +304,6 @@ git push origin {当前分支}
 - [ ] README.md 已更新（或确认无新内容）
 - [ ] 已修复的 GitHub Issue 已评论
 - [ ] IDEAS.md 已更新（或确认无新内容）
+- [ ] LESSONS.md 已更新（或确认无新内容）
 - [ ] 记忆文件已更新当前事实
 - [ ] 文档已提交并推送

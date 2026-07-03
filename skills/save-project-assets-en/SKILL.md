@@ -17,7 +17,7 @@ description: Use proactively when user confirms something works ("it works", "ve
 
 ## Overview
 
-Capture and persist all knowledge generated in this session: engineering lessons, feature status, fixed issues, ideas, and memory updates.
+Capture and persist all knowledge generated in this session: engineering lessons, feature status, fixed issues, ideas, lessons learned, and memory updates.
 
 **Announce at start:** "Saving project assets..."
 
@@ -105,6 +105,7 @@ Before writing anything, collect from this session:
 | Feature status | Built / tested / merged | `docs/CHANGELOG.md` |
 | Fixed issues | Confirmed working by user | GitHub issue comments |
 | Ideas / future work | Noticed but not implemented | `docs/IDEAS.md` |
+| Lessons learned | Pitfalls, mistakes, what to avoid next time | `docs/LESSONS.md` |
 | Persistent facts | Architecture, preferences, constraints | Memory files |
 | README summary | New features shipped, fixed issues, install changes | `README.md` |
 
@@ -200,6 +201,24 @@ New ideas, improvements, or "noticed but not done" items:
 
 ---
 
+## Step 5b: Update LESSONS.md (Lessons Learned)
+
+File: `docs/LESSONS.md`
+
+Pitfalls hit, mistakes made, what to avoid next time — distinct from TECH_LOG (a running journal); LESSONS captures the takeaway:
+
+```markdown
+## {Topic}
+
+- **Lesson:** {what went wrong}
+  - **Why:** {root cause}
+  - **Avoid:** {how to not repeat it}
+```
+
+**Skip** if nothing new.
+
+---
+
 ## Step 6: Update Persistent Memory
 
 Memory location: auto-detected by Claude Code at `~/.claude/projects/{sanitized-cwd}/memory/`
@@ -243,7 +262,7 @@ type: project | feedback | user | reference
 If `docs/` files were modified:
 
 ```bash
-git add docs/TECH_LOG.md docs/CHANGELOG.md docs/IDEAS.md README.md
+git add docs/TECH_LOG.md docs/CHANGELOG.md docs/IDEAS.md docs/LESSONS.md README.md
 git commit -m "docs: {brief description of what was recorded}"
 # Push ONLY if direct pushes to this branch are allowed.
 # On protected / review-required branches, stop after commit and
@@ -271,6 +290,7 @@ On the first message of a new session:
 | Tech lessons | `{DOCS_DIR}/TECH_LOG.md` |
 | Changelog | `{DOCS_DIR}/CHANGELOG.md` |
 | Ideas | `{DOCS_DIR}/IDEAS.md` |
+| Lessons | `{DOCS_DIR}/LESSONS.md` |
 | Architecture | `{DOCS_DIR}/ARCHITECTURE.md` |
 | Memory | `~/.claude/projects/{sanitized-cwd}/memory/MEMORY.md` |
 | GitHub repo | parsed from `git remote get-url origin` |
@@ -285,5 +305,6 @@ On the first message of a new session:
 - [ ] README.md updated (or confirmed nothing new)
 - [ ] Fixed GitHub issues commented
 - [ ] IDEAS.md updated (or confirmed nothing new)
+- [ ] LESSONS.md updated (or confirmed nothing new)
 - [ ] Memory files updated with current facts
 - [ ] Docs committed and pushed

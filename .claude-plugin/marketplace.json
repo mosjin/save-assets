@@ -8,8 +8,8 @@
     {
       "name": "save-project-assets",
       "source": "./",
-      "description": "Proactively save all project knowledge: TECH_LOG, CHANGELOG, README, GitHub issues, IDEAS, memory. Bilingual 中文/EN.",
-      "version": "1.3.0"
+      "description": "Proactively save all project knowledge: TECH_LOG, CHANGELOG, README, GitHub issues, IDEAS, LESSONS, memory. Bilingual 中文/EN.",
+      "version": "1.4.0"
     }
   ]
 }

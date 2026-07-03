@@ -2,6 +2,15 @@
 
 本项目所有重要变更记录于此。格式参考 [Keep a Changelog](https://keepachangelog.com/zh-CN/)。
 
+## [1.4.0] — 2026-07-03
+
+### 🚀 Feature
+
+- **新增 LESSONS.md 教训类别** — 与 IDEAS 平级的一等资产。语义分工：`TECH_LOG.md` 为流水日志（工程经验、根因），`LESSONS.md` 为教训要点（踩过的坑 / 根因 / 下次规避，三段式模板）。
+- 新增独立步骤 **Step 5b：更新 LESSONS.md**（三语：bilingual `## Step 5b` · EN `## Step 5b` · ZH `## 第五步之二`）。
+- 同步更新全部 6 个 SKILL.md 变体（bilingual / EN / ZH × `.claude/skills/` + `skills/`）：Step 1 采集表新增 Lessons 行、Asset Locations 表新增 LESSONS 行、Step 7 `git add` 新增 `docs/LESSONS.md`、Checklist 新增 LESSONS 条目。
+- README 同步：功能列表、步骤表、文件名约定注记均加入 LESSONS。
+
 ## [1.3.0] — 2026-07-01
 
 ### 🚀 Feature
