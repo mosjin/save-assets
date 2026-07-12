@@ -1,5 +1,5 @@
 ---
-name: save-project-assets-zh
+name: save-assets-zh
 description: 当用户确认某功能可用（"可以了"、"验证通过"、"已修复"），会话即将结束/上下文接近上限，或用户明确说"保存资产"、"更新文档"、"更新记忆"时主动触发。不要在每次 git commit 时触发——只在有值得持久化的新知识时运行。
 ---
 
@@ -38,7 +38,7 @@ description: 当用户确认某功能可用（"可以了"、"验证通过"、"�
 | "保存资产" / "save assets" | 完整 7 步 |
 | "更新文档" / "update docs" | 仅第 2-3-7 步 |
 | "更新记忆" / "update memory" | 仅第 6 步 |
-| `/save-project-assets-zh` | 直接调用 |
+| `/save-assets-zh` | 直接调用 |
 
 **❌ 不触发的情况：**
 - 每次 `git commit` / `git push` — 太频繁，第 7 步本身会产生 commit

@@ -1,15 +1,15 @@
 {
-  "name": "save-project-assets",
+  "name": "save-assets",
   "owner": {
     "name": "mosjin",
     "url": "https://github.com/mosjin"
   },
   "plugins": [
     {
-      "name": "save-project-assets",
+      "name": "save-assets",
       "source": "./",
       "description": "Proactively save all project knowledge: TECH_LOG, CHANGELOG, README, GitHub issues, IDEAS, LESSONS, memory. Bilingual 中文/EN.",
-      "version": "1.4.0"
+      "version": "2.0.0"
     }
   ]
 }

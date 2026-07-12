@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-One-command installer for save-project-assets Claude Code skill.
+One-command installer for save-assets Claude Code skill.
 Auto-patches ~/.claude/settings.json — no JSON editing needed.
 
   python install.py           # install
@@ -9,9 +9,9 @@ Auto-patches ~/.claude/settings.json — no JSON editing needed.
 import json, os, sys, shutil
 from pathlib import Path
 
-MARKETPLACE_KEY = "save-project-assets"
-PLUGIN_KEY      = "save-project-assets@save-project-assets"
-SOURCE          = {"source": {"source": "github", "repo": "mosjin/save-project-assets"}}
+MARKETPLACE_KEY = "save-assets"
+PLUGIN_KEY      = "save-assets@save-assets"
+SOURCE          = {"source": {"source": "github", "repo": "mosjin/save-assets"}}
 
 
 def find_settings():
@@ -42,7 +42,7 @@ def install():
 
     if changed:
         path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-        print("\nDone! Run  /reload-plugins  inside Claude Code, then use /save-project-assets")
+        print("\nDone! Run  /reload-plugins  inside Claude Code, then use /save-assets")
     else:
         print("Already installed. Run /reload-plugins if skills are not showing.")
 

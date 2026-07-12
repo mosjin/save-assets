@@ -2,6 +2,16 @@
 
 本项目所有重要变更记录于此。格式参考 [Keep a Changelog](https://keepachangelog.com/zh-CN/)。
 
+## [2.0.0] — 2026-07-12
+
+### ⚠️ Breaking — 重命名 skill / plugin
+
+- **`save-project-assets` → `save-assets`**：斜杠命令由 `/save-project-assets` 缩短为 `/save-assets`（三变体同步：`save-assets` · `save-assets-en` · `save-assets-zh`）。命令更短好记。
+- 目录重命名（`git mv` 保留历史）：`skills/` 与 `.claude/skills/` 下各 3 个 skill 目录。
+- plugin 名与 marketplace 名同步改为 `save-assets`；`repository` 字段指向新仓库名。
+- README / README_EN / install.py / hooks/settings-example.json 中的引用级联更新。
+- **升级须知**：已安装用户需按新名 `save-assets` 重新触发；GitHub 仓库已改名，旧 URL 由 GitHub 自动重定向，经 git 安装的用户不受影响。因 plugin 名变更属破坏性，按 semver 升为主版本号 **2.0.0**。
+
 ## [1.4.0] — 2026-07-03
 
 ### 🚀 Feature
