@@ -1,4 +1,4 @@
-# save-project-assets
+# save-assets
 
 > 在提交代码时或按需主动保存所有项目知识。
 
@@ -19,20 +19,20 @@
 
 ## 安装
 
-save-project-assets 以 Claude Code 插件市场的形式托管在 GitHub 上。
+save-assets 以 Claude Code 插件市场的形式托管在 GitHub 上。
 
 ### 推荐方式：Plugin 安装（两条命令）
 
 **第一步：添加插件市场**
 
 ```
-/plugin marketplace add mosjin/save-project-assets
+/plugin marketplace add mosjin/save-assets
 ```
 
 **第二步：安装插件**
 
 ```
-/plugin install save-project-assets
+/plugin install save-assets
 ```
 
 搞定。插件已在你的 Claude Code 会话中可用。
@@ -40,8 +40,8 @@ save-project-assets 以 Claude Code 插件市场的形式托管在 GitHub 上。
 ### 备用方式 B：一键脚本
 
 ```bash
-git clone https://github.com/mosjin/save-project-assets
-cd save-project-assets
+git clone https://github.com/mosjin/save-assets
+cd save-assets
 python install.py
 ```
 
@@ -54,12 +54,12 @@ python install.py
 ```json
 {
   "extraKnownMarketplaces": {
-    "save-project-assets": {
-      "source": { "source": "github", "repo": "mosjin/save-project-assets" }
+    "save-assets": {
+      "source": { "source": "github", "repo": "mosjin/save-assets" }
     }
   },
   "enabledPlugins": {
-    "save-project-assets@save-project-assets": true
+    "save-assets@save-assets": true
   }
 }
 ```
@@ -71,9 +71,9 @@ python install.py
 ## 使用
 
 ```
-/save-project-assets        # 自动识别语言
-/save-project-assets-zh     # 中文
-/save-project-assets-en     # English
+/save-assets        # 自动识别语言
+/save-assets-zh     # 中文
+/save-assets-en     # English
 ```
 
 **自动触发**（无需输入命令）当你说：`保存资产` · `更新文档` · `更新记忆` · `save assets` · `update docs` · `update memory`
@@ -152,15 +152,15 @@ Skill 会自动识别：
 ## 目录结构
 
 ```
-save-project-assets/
+save-assets/
 ├── install.py                              ← 备用一键安装脚本
 ├── .claude-plugin/
 │   ├── plugin.json                         ← 插件元数据
 │   └── marketplace.json                    ← GitHub 插件市场清单
 ├── .claude/skills/
-│   ├── save-project-assets/SKILL.md        ← 双语默认版
-│   ├── save-project-assets-zh/SKILL.md     ← 中文版
-│   └── save-project-assets-en/SKILL.md     ← 英文版
+│   ├── save-assets/SKILL.md        ← 双语默认版
+│   ├── save-assets-zh/SKILL.md     ← 中文版
+│   └── save-assets-en/SKILL.md     ← 英文版
 ├── hooks/settings-example.json             ← Hook 配置示例
 ├── README.md                               ← 中文文档（本文件）
 └── README_EN.md                            ← English docs

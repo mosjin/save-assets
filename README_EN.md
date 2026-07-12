@@ -1,4 +1,4 @@
-# save-project-assets
+# save-assets
 
 > Proactively save all project knowledge at commit time or on demand.
 
@@ -25,13 +25,13 @@ Hosted as a Claude Code plugin marketplace on GitHub.
 **Step 1: Add the marketplace**
 
 ```
-/plugin marketplace add mosjin/save-project-assets
+/plugin marketplace add mosjin/save-assets
 ```
 
 **Step 2: Install the plugin**
 
 ```
-/plugin install save-project-assets
+/plugin install save-assets
 ```
 
 Done. The skill is now available in your Claude Code session.
@@ -39,8 +39,8 @@ Done. The skill is now available in your Claude Code session.
 ### Alternative B: one-command script
 
 ```bash
-git clone https://github.com/mosjin/save-project-assets
-cd save-project-assets
+git clone https://github.com/mosjin/save-assets
+cd save-assets
 python install.py
 ```
 
@@ -53,12 +53,12 @@ Add to `~/.claude/settings.json`:
 ```json
 {
   "extraKnownMarketplaces": {
-    "save-project-assets": {
-      "source": { "source": "github", "repo": "mosjin/save-project-assets" }
+    "save-assets": {
+      "source": { "source": "github", "repo": "mosjin/save-assets" }
     }
   },
   "enabledPlugins": {
-    "save-project-assets@save-project-assets": true
+    "save-assets@save-assets": true
   }
 }
 ```
@@ -70,9 +70,9 @@ Then `/reload-plugins`.
 ## Usage
 
 ```
-/save-project-assets        # auto language
-/save-project-assets-zh     # Chinese
-/save-project-assets-en     # English
+/save-assets        # auto language
+/save-assets-zh     # Chinese
+/save-assets-en     # English
 ```
 
 **Auto-triggers** (no command needed) when you say: `save assets` · `update docs` · `update memory`
@@ -149,15 +149,15 @@ Copy entries from `hooks/settings-example.json` into `~/.claude/settings.json`:
 ## Directory Structure
 
 ```
-save-project-assets/
+save-assets/
 ├── install.py                              ← fallback one-command installer
 ├── .claude-plugin/
 │   ├── plugin.json                         ← plugin metadata
 │   └── marketplace.json                    ← GitHub marketplace manifest
 ├── .claude/skills/
-│   ├── save-project-assets/SKILL.md        ← bilingual default
-│   ├── save-project-assets-zh/SKILL.md     ← Chinese
-│   └── save-project-assets-en/SKILL.md     ← English
+│   ├── save-assets/SKILL.md        ← bilingual default
+│   ├── save-assets-zh/SKILL.md     ← Chinese
+│   └── save-assets-en/SKILL.md     ← English
 ├── hooks/settings-example.json             ← hook configuration example
 ├── README.md                               ← 中文文档
 └── README_EN.md                            ← English docs (this file)

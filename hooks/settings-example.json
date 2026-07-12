@@ -1,12 +1,12 @@
 {
-  "_comment": "Add these hooks to your ~/.claude/settings.json to auto-trigger save-project-assets",
+  "_comment": "Add these hooks to your ~/.claude/settings.json to auto-trigger save-assets",
   "hooks": {
     "SessionStart": [
       {
         "hooks": [
           {
             "type": "command",
-            "command": "echo '{\"hookSpecificOutput\":{\"hookEventName\":\"SessionStart\",\"additionalContext\":\"[save-project-assets active] Run /save-project-assets (or /save-project-assets-zh / -en) proactthunder: before commits, after fixes, on user request (save/record/保存/记录/update docs).\" }}'",
+            "command": "echo '{\"hookSpecificOutput\":{\"hookEventName\":\"SessionStart\",\"additionalContext\":\"[save-assets active] Run /save-assets (or /save-assets-zh / -en) proactthunder: before commits, after fixes, on user request (save/record/保存/记录/update docs).\" }}'",
             "timeout": 5,
             "statusMessage": "Loading project context..."
           }
@@ -18,7 +18,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "echo '{\"hookSpecificOutput\":{\"hookEventName\":\"Stop\",\"additionalContext\":\"[save-project-assets] Session ending — if new lessons, confirmed fixes, or ideas were produced this session, consider running /save-project-assets before closing.\"}}'",
+            "command": "echo '{\"hookSpecificOutput\":{\"hookEventName\":\"Stop\",\"additionalContext\":\"[save-assets] Session ending — if new lessons, confirmed fixes, or ideas were produced this session, consider running /save-assets before closing.\"}}'",
             "timeout": 3,
             "async": true
           }
