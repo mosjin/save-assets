@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "echo '{\"hookSpecificOutput\":{\"hookEventName\":\"SessionStart\",\"additionalContext\":\"[save-assets active] Run /save-assets (or /save-assets-zh / -en) proactthunder: before commits, after fixes, on user request (save/record/保存/记录/update docs).\" }}'",
+            "command": "echo '{\"hookSpecificOutput\":{\"hookEventName\":\"SessionStart\",\"additionalContext\":\"[save-assets active] Run /save-assets (or /save-assets-zh / -en) proactively: before commits, after fixes, on user request (save/record/保存/记录/update docs).\" }}'",
             "timeout": 5,
             "statusMessage": "Loading project context..."
           }
