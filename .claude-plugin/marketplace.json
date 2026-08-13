@@ -9,7 +9,7 @@
       "name": "save-assets",
       "source": "./",
       "description": "Proactively save all project knowledge: TECH_LOG, CHANGELOG, README, GitHub issues, IDEAS, LESSONS, memory. Bilingual 中文/EN.",
-      "version": "2.0.0"
+      "version": "2.1.0"
     }
   ]
 }

@@ -50,6 +50,21 @@ Capture and persist all knowledge generated in this session: engineering lessons
 
 ---
 
+## Step -1: Retrieve Before Asserting
+
+Before writing anything that says a project is **"maybe not done" / "might not work" / "probably isn't built yet" / "most likely the explanation is…"** — any negative or speculative claim about project state — retrieve saved assets first:
+
+```bash
+grep -rn "<keyword>" {DOCS_DIR}/        # CHANGELOG / TECH_LOG / VERIFIED_FACTS, etc.
+gh issue view {N} --comments            # that issue's own history
+```
+
+Only say "unclear" after searching and finding nothing. **Never** infer "so X is still unfinished" from "I recall X was in progress at the time" — a remembered in-progress state has no date attached, so there is no way to tell whether it has gone stale since.
+
+A knowledge base that is only ever written to, never read, is worth nothing.
+
+---
+
 ## Step 0b: Auto-Detect Project Context
 
 Before writing anything, resolve these values (use CONFIG overrides if set, otherwise detect):
@@ -88,6 +103,7 @@ Before doing anything, answer:
 - Did this session produce **new** lessons, fixes, or architectural decisions?
 - Did the user **explicitly confirm** something works?
 - Are there **new** ideas or status changes not yet in docs/memory?
+- Did the **status of any previously recorded fact change** (a blocker cleared, a capability got verified, an assumption got disproven)?
 
 **If all NO → stop immediately.** Say: "Nothing new to save this session."
 
@@ -107,6 +123,7 @@ Before writing anything, collect from this session:
 | Ideas / future work | Noticed but not implemented | `docs/IDEAS.md` |
 | Lessons learned | Pitfalls, mistakes, what to avoid next time | `docs/LESSONS.md` |
 | Persistent facts | Architecture, preferences, constraints | Memory files |
+| Verified capability | Confirmed working, with evidence | `docs/VERIFIED_FACTS.md` |
 | README summary | New features shipped, fixed issues, install changes | `README.md` |
 
 **Only write new entries** — never duplicate existing content.
@@ -215,7 +232,39 @@ Pitfalls hit, mistakes made, what to avoid next time — distinct from TECH_LOG 
   - **Avoid:** {how to not repeat it}
 ```
 
+**Reasoning errors** — when this session's own findings contradicted something asserted earlier, use this sub-template instead:
+
+```markdown
+- **Wrong call**: {what was asserted}
+  - **Based on**: {what that assertion relied on}
+  - **Why it was wrong**: {the problem with that basis — stale? never checked? overgeneralized?}
+  - **Check first next time**: {the specific retrieval action that would have caught it}
+```
+
 **Skip** if nothing new.
+
+---
+
+## Step 5c: Update VERIFIED_FACTS.md (Verified Capability State)
+
+File: `docs/VERIFIED_FACTS.md`
+
+Use this for facts that **can go stale** — "this capability works", "this permission is granted", "this backup restores cleanly" — unlike `Persistent facts` in Step 1 (architecture, constraints, preferences), which rarely change.
+
+Every entry requires all five fields:
+
+```markdown
+### {Capability, phrased as a statement — "X works" not "working on X"}
+- **Fact**: {statement}
+- **Verified on**: {YYYY-MM-DD absolute date}
+- **Evidence**: {checkable — log excerpt, command output, screenshot path, issue link. "I remember testing it" does not count}
+- **Verified by**: {user on device / CI / me by reading logs — these carry different weight}
+- **Invalidated by**: {what would require re-verifying this}
+```
+
+**Rule:** facts in this ledger can only be overturned by new evidence, never by reasoning. A conclusion reached by reading code does not outweigh a user's successful action on a real device.
+
+**Skip** if nothing new was verified this session.
 
 ---
 
@@ -255,6 +304,14 @@ type: project | feedback | user | reference
 - Fixed issues list (append newly fixed)
 - New engineering lessons
 
+### 6d. Retire superseded state
+
+Scan memory files for in-progress phrasing ("working on" / "pending" / "waiting for" / "TODO: waiting on someone") and ask, for each one, "is this done now?":
+- Done → rewrite it as a statement with an **absolute date**; do not leave the old phrasing in place
+- Not done → keep it, but stamp it with a **recorded-on date** so a future read can tell whether it has since gone stale
+
+**Why this matters:** nothing automatically revisits this kind of note when the underlying thing finally lands. Memory files auto-load every session, so their visibility outranks a correct fact buried deep in a doc — a stale "in progress" note wins by default unless it is retired.
+
 ---
 
 ## Step 7: Commit Docs
@@ -262,7 +319,7 @@ type: project | feedback | user | reference
 If `docs/` files were modified:
 
 ```bash
-git add docs/TECH_LOG.md docs/CHANGELOG.md docs/IDEAS.md docs/LESSONS.md README.md
+git add docs/TECH_LOG.md docs/CHANGELOG.md docs/IDEAS.md docs/LESSONS.md docs/VERIFIED_FACTS.md README.md
 git commit -m "docs: {brief description of what was recorded}"
 # Push ONLY if direct pushes to this branch are allowed.
 # On protected / review-required branches, stop after commit and
@@ -291,6 +348,7 @@ On the first message of a new session:
 | Changelog | `{DOCS_DIR}/CHANGELOG.md` |
 | Ideas | `{DOCS_DIR}/IDEAS.md` |
 | Lessons | `{DOCS_DIR}/LESSONS.md` |
+| Verified facts | `{DOCS_DIR}/VERIFIED_FACTS.md` |
 | Architecture | `{DOCS_DIR}/ARCHITECTURE.md` |
 | Memory | `~/.claude/projects/{sanitized-cwd}/memory/MEMORY.md` |
 | GitHub repo | parsed from `git remote get-url origin` |
@@ -306,5 +364,7 @@ On the first message of a new session:
 - [ ] Fixed GitHub issues commented
 - [ ] IDEAS.md updated (or confirmed nothing new)
 - [ ] LESSONS.md updated (or confirmed nothing new)
+- [ ] VERIFIED_FACTS.md updated (or confirmed nothing new)
+- [ ] Superseded in-progress state retired from memory
 - [ ] Memory files updated with current facts
 - [ ] Docs committed and pushed

@@ -10,6 +10,8 @@ A [Claude Code](https://claude.ai/code) skill that automatically persists all kn
 - 📝 **CHANGELOG** — Feature status & fix records
 - 💬 **GitHub Issues** — Auto-comment confirmed fixes
 - 💡 **IDEAS** — Future work & improvement notes
+- ⚠️ **LESSONS** — Pitfalls & lessons learned (what went wrong, root cause, avoidance)
+- ✅ **VERIFIED_FACTS** — Verified capability state (fact + date + evidence + invalidation trigger)
 - 🧠 **Memory** — Persistent cross-session context
 
 Three variants: **中文 (zh)** · **English (en)** · **auto-detect (default)**
@@ -79,18 +81,22 @@ Then `/reload-plugins`.
 
 ---
 
-## Workflow (7 steps)
+## Workflow (8 steps)
 
 | Step | Action |
 |------|--------|
+| -1 | Retrieve before asserting — search docs and issue history before claiming something "might not be done" |
 | 0 | Content check — exit immediately if nothing new |
 | 1 | Harvest session knowledge |
 | 2 | Update `docs/TECH_LOG.md` with lessons |
 | 3 | Update `docs/CHANGELOG.md` with feature status |
+| 3b | Update `README.md` with user-facing summary (only affected sections) |
 | 4 | Comment on confirmed-fixed GitHub issues |
 | 5 | Update `docs/IDEAS.md` with new ideas |
-| 6 | Update Claude Code auto-memory (MEMORY.md) |
-| 7 | `git add docs/ && git commit && git push` |
+| 5b | Update `docs/LESSONS.md` with lessons learned (pitfall/root cause/avoidance) |
+| 5c | Update `docs/VERIFIED_FACTS.md` with verified capability state (fact/date/evidence/invalidation trigger) |
+| 6 | Update Claude Code auto-memory (MEMORY.md), including 6d — retire superseded in-progress state |
+| 7 | `git add docs/ README.md && git commit && git push` |
 
 ---
 
@@ -131,7 +137,7 @@ To override, open the installed SKILL.md and uncomment the CONFIG block:
 -->
 ```
 
-> 📄 Doc filenames (`TECH_LOG.md` / `CHANGELOG.md` / `IDEAS.md`) are conventions — rename them in SKILL.md if your project already uses different names.
+> 📄 Doc filenames (`TECH_LOG.md` / `CHANGELOG.md` / `IDEAS.md` / `LESSONS.md` / `VERIFIED_FACTS.md`) are conventions — rename them in SKILL.md if your project already uses different names.
 
 Memory path is auto-detected by Claude Code — no setup needed.
 

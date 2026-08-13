@@ -1,6 +1,6 @@
 {
   "name": "save-assets",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Proactively save all project knowledge at commit time or on demand: TECH_LOG journal, CHANGELOG status, README updates, GitHub issue comments, IDEAS, LESSONS learned, and persistent memory. Bilingual (中文/English).",
   "author": {
     "name": "mosjin",
